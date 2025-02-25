@@ -9,6 +9,17 @@ class Solution:
 
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         def merge(list1, list2):
+            """
+            Merges two sorted arrays in one sorted array
+
+            Args: 
+                nums1: List[int]: Sorted list of ints
+                nums2: List[int]: Sorted list of ints
+            
+            Returns:
+                List[int]: The sorted joint list
+            """
+
             combined = []
             i=0
             j=0
@@ -31,11 +42,14 @@ class Solution:
 
             return combined
 
+        # Merge both lists into one
         sorted = merge(nums1, nums2)
         sorted_length = len(sorted)
 
+        # If the length of the list is odd, select the median of the list
         if sorted_length % 2 == 1:
             return sorted[math.floor(sorted_length / 2)]   
+        # If the length of the list is even, calculate the average between the two midpoints
         else:
             midpoint = int((sorted_length / 2))
             return (sorted[ midpoint - 1] + sorted[ midpoint]) / 2
