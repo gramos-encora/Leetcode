@@ -56,11 +56,11 @@ class LRUCache {
         if (this.cache.has(key)) {
             this.remove(this.cache.get(key)!);
         }
-        
+
         const node = new CacheNode(key, value);
         this.cache.set(key, node);
         this.insert(node);
-        
+
         if (this.cache.size > this.capacity) {
             const lru = this.oldest.next!;
             this.remove(lru);
