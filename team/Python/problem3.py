@@ -1,6 +1,6 @@
 class Solution:
     """
-    Solution fo Leetcode problem 3
+    Solution for Leetcode problem 3
     Longest Substring Without Repeating Characters
     """
     def lengthOfLongestSubstring(self, s: str) -> int:
