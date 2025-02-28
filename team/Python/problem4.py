@@ -23,8 +23,17 @@ class Solution:
             for j in range(1, m + 1):
                 # If there is a * in pattern
                 if p[j-1] == '*':
-                    # Search coincidences
-                    memory[i][j] = (j >= 2 and memory[i][j-2]) or (i > 0 and j >= 2 and (s[i-1] == p[j-2] or p[j-2] == '.') and memory[i-1][j])
+                    # Option 1: Ignore previous character
+                    ignorePattern = (j >= 2 and memory[i][j - 2])
+
+                    # Option 2: If the previous character match with s or .
+                    repeatChar = (i > 0 and j >= 2 and (s[i - 1] == p[j - 2] or p[j - 2] == '.') and memory[i - 1][j])
+
+                    memory[i][j] = ignorePattern or repeatChar
                 else:
-                    memory[i][j] = i > 0 and memory[i-1][j-1] and (s[i-1] == p[j-1] or p[j-1] == '.')
+                    # Verify if the character with s and p match with current s char or .
+                    charMatch = (i > 0 and (s[i - 1] == p[j - 1] or p[j - 1] == '.'))
+
+                    # Validating conditions
+                    memory[i][j] = i > 0 and memory[i - 1][j - 1] and charMatch
         return memory[n][m]
