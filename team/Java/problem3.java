@@ -1,7 +1,10 @@
+import java.util.Map;
+import java.util.HashMap;
+
 /*
  Solution for Leetcode problem 3
  Longest Substring without Repeating Characters
-*
+*/
 class Solution {
   /*
    Find the longest substring without repeated characters
@@ -17,7 +20,7 @@ class Solution {
     Integer left = 0;
     Integer maxS = 0;
     for(int right = 0; right < s.length(); right++) {
-      char rightChar = s.charAt(right)
+      char rightChar = s.charAt(right);
       if (!seen.containsKey(rightChar)){
         maxS = Math.max(maxS, (right - left + 1));
       } else {
